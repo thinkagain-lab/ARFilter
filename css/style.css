@@ -73,6 +73,10 @@ p {
     text-decoration: none;
 }
 
+.text-voilet
+{
+    color:blueviolet;
+}
 
 .text-primary-gradient {
     background: linear-gradient(to bottom right, var(--color-blue), var(--color-pink));
