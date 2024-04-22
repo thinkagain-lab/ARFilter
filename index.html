@@ -338,9 +338,9 @@
 
         <!-- 4x engagement  -->
 
-        <section class="container feature-container py-5 px-lg-5">
+        <section class="container feature-container py-5 px-lg-5 " style="margin-top:20px;">
           <div class="row g-5 align-items-center">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="col-lg-6  wow fadeInUp fxengagehead" data-wow-delay="0.1s">
               <h1
                 class="mb-5 heading-text title-text text-center text-lg-start text-xl-start text-xxl-start"
               >
@@ -357,7 +357,7 @@
                 today's digital landscape
               </p>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6 fxengageimg">
               <img
                 class="img-fluid wow zoomIn"
                 data-wow-delay="0.5s"
@@ -939,6 +939,7 @@
                 id="contactform"
                 action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScUA9HWf1HKHCszTZffSNkyf9Hw0Kt-Uf0mkiT9OdfoxILPUg/formResponse"
                 method="post"
+                
               >
                 <div class="row gy-2">
                   <!-- Name Feild  -->
@@ -1073,6 +1074,9 @@
                 <a class="btn btn-outline-light btn-social" href="https://www.instagram.com/think_again_lab_official?igsh=MTNwbm9pMmhnc2FsZA==" target="_blank"
                   ><i class="fab fa-instagram"></i
                 ></a>
+                <a class="btn btn-outline-light btn-social" href="https://twitter.com/thinkagainlab" target="_blank"
+                ><i class="fab fa-twitter"></i
+              ></a>
                 <a class="btn btn-outline-light btn-social" href="http://www.linkedin.com/company/thinkagainlab/" target="_blank"
                   ><i class="fab fa-linkedin-in"></i
                 ></a>
@@ -1119,28 +1123,40 @@
     <script src="js/main.js"></script>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("contactform");
+    document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contactform");
 
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-          fetch(form.action, {
-            method: form.method,
-            body: new FormData(form),
-          })
-            .then((response) => {
-              if (response.status == 200) {
-                alert("We shall contact you soon");
-              } else {
-                console.error("Form submission failed:", response.statusText);
-              }
-            })
-            .catch((error) => {
-              console.error("Error submitting form:", error);
-            });
-        });
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+    })
+      .then((response) => {
+       
+        if (response.status == 200) {
+          alert("We shall contact you soon");
+        } else {
+        
+          console.error("Form submission failed:", response.statusText);
+        }
+        return response;
+      })
+      .then((response) => {
+      
+        if (!response.ok && response.status !== 200) {
+          
+          console.error("Form submission failed:", response.statusText);
+        }
+      })
+      .catch((error) => {
+        
+        console.error("Error submitting form:", error);
       });
+  });
+});
+
     </script>
   </body>
 </html>
